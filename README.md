@@ -33,4 +33,6 @@ ports:
 ```
 
 
+## Visualização dos dados da tabela `Clients` no DBeaver conectando ao MySQL no Docker.
+
 ![DBeaver MySQL connection issue](img/img_db.png)
