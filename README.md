@@ -1,4 +1,54 @@
-# 🐛 **Problema: DBeaver não conecta ao MySQL no Docker**
+# 🐳 Docker + Nginx + PHP + MySQL
+
+Este projeto utiliza `Docker` com três serviços principais definidos via `docker-compose`:
+
+## 📦 Serviços
+
+```yaml
+services:
+  # Servidor Nginx
+  webserver:
+    image: nginx:latest
+    container_name: website_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+```
+
+```yaml
+  # PHP
+  php:
+    image: php8.3:v1
+    container_name: website_php
+    volumes:
+      - ./php/public:/var/www/html/public
+
+```
+
+```yaml
+  # MySQL
+  db:
+    image: mysql:8.0
+    container_name: website_mysql
+    ports:
+      - "3307:3306"
+    restart: unless-stopped
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: teste123
+      MYSQL_DATABASE: app_database
+      MYSQL_USER: user_app_database
+      MYSQL_PASSWORD: teste1234
+    command: --default-authentication-plugin=mysql_native_password
+
+
+```
+
+
+# 🐛 **Problema enfrenteado : DBeaver não conectava ao MySQL no Docker**
 
 ## 💻 **Sintomas**
 - Erros ao tentar conectar:
