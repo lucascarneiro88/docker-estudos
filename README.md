@@ -30,3 +30,7 @@ Você alterou o mapeamento da porta no Docker para evitar conflito:
 # Em docker-compose.yml ou no comando `docker run`
 ports:
   - "3307:3306"
+```
+
+
+![DBeaver MySQL connection issue](img/img_db.png)
